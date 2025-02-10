@@ -75,12 +75,20 @@ def test_starts_with(string,symbol,result):
    assert utils.starts_with(string,symbol) == result
 
 
-#7 end_with
-# pytest.mark.parametrize ("string,symbol,result",[
-#    ("Mama","a",True),("DOM","M",True),("Dog","G",True),("Brother","U",False)])
-# def test_end_with(string,symbol,result):
-#  utils = StringUtils()
-#  assert utils.end_with(string,symbol) == result
+@pytest.mark.parametrize ("input_text,symbol,result",[
+   #Positiv
+("  Hello", "H", False),
+ ("hello Hello", "H", False),
+("", "H", False),
+ ("Hello ", " ", False),
+(" ", " ", True),
+#negativ
+("1235", "1", True),
+ ]) 
+def test_end_with(input_text,symbol,result):
+ utils = StringUtils()
+ assert utils.end_with(input_text,symbol) == result
+
 
 
 
